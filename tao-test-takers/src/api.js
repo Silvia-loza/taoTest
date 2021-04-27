@@ -1,0 +1,17 @@
+// TEST PRUEBA COPIA COPIA 
+
+import axios from 'axios'
+import httpAdapter from 'axios/lib/adapters/http'
+
+const instance = axios.create({
+    baseURL: 'https://api.github.com',
+    adapter: httpAdapter,
+});
+
+export default {
+    searchSpeaker(username) {
+        return instance
+            .get(`/users/${username}`)
+            .then(result => result.data);
+    },
+};
