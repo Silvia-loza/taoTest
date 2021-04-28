@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App works renders the component 1`] = `
+<div>
+  <header-stub></header-stub>
+  <test-taker-stub></test-taker-stub>
+  <footer-stub></footer-stub>
+</div>
+`;

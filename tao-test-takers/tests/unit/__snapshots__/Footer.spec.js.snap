@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header works renders the component 1`] = `
+<footer class="footer">
+  <ul>
+    <li>Products</li>
+    <li>Solutions</li>
+    <li>Services</li>
+    <li>Support</li>
+    <li>Company</li>
+  </ul>
+</footer>
+`;
