@@ -8,7 +8,7 @@
 </template>
 
 <script>
-// import users from '../assets/data/testtakers.json'
+// mport users from '../assets/data/testtakers.json'
 export default {
   name: 'Test-taker',
   data () {
@@ -18,9 +18,9 @@ export default {
   },
   created () {
     this.getUsers()
-    // this.data = getUsers()
   },
   methods: {
+    // asyncronus function that fetches the data from api, then sent to data and looped in v-for in template
     async getUsers () {
       const res = await fetch('https://hr.oat.taocloud.org/v1/users?limit=20&offset=0')
       const data = await res.json()

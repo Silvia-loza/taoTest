@@ -13,6 +13,7 @@ describe("App works", () => {
         expect(wrapper.html()).toMatchSnapshot()
     })
     const build = () => {
+         //arrange item to be mounted
         const wrapper = shallowMount(App)
         return {
             wrapper,
