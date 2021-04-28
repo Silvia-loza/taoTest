@@ -1,15 +1,14 @@
 <template>
     <section class="all-cards">
-        <div v-for="(user, index) in usuarios" :key="index" class="card-user">
-         <img class="user-image" :src="user.picture" alt="user">
-         <p>{{user.title}} {{user.firstname}} {{user.lastname}}</p>
-         <p id="email">{{user.email}}</p>
+        <div v-for = "dato in data" :key="dato.userId" class="card-user">
+         <p class="user-data">{{dato.firstName}} {{dato.lastName}}</p>
+         <!-- <p id="email">{{user.email}}</p> -->
         </div>
     </section>
 </template>
 
 <script>
-import users from '../assets/data/testtakers.json'
+// import users from '../assets/data/testtakers.json'
 export default {
   name: 'Test-taker',
   data () {
@@ -17,24 +16,18 @@ export default {
       data: []
     }
   },
-  computed: {
-    usuarios () {
-      return users.map((user) => {
-        return user
-      })
+  created () {
+    this.getUsers()
+    // this.data = getUsers()
+  },
+  methods: {
+    async getUsers () {
+      const res = await fetch('https://hr.oat.taocloud.org/v1/users?limit=20&offset=0')
+      const data = await res.json()
+      console.log(data)
+      this.data = data
     }
   }
-//   created () {
-//     this.getUsers()
-//   },
-//   methods: {
-//     getUsers () {
-//       fetch('./testtakers.json')
-//         .then(res => res.json())
-//         .then(data => console.log(data))
-//         .catch(err => console.log(err))
-//     }
-//   }
 }
 </script>
 
@@ -53,8 +46,21 @@ export default {
  padding: 0 3%;
 box-shadow: 0.5px 9px 9px 4px rgba(0, 0, 0, 0.2);
  }
+ .card-user:hover{
+ justify-content: center;
+ margin: 5%;
+ padding: 0 3%;
+box-shadow: 1px 18px 18px 8px rgba(0, 0, 0, 0.2);
+ }
  .user-image {
- width:10%}
+ width:10%
+ }
+ .user-data {
+ margin: 2%
+ }
+ .user-data:hover {
+ color: #d77d81;
+ }
  #email {
  color: #d77d81;
  font-size: 120%;
