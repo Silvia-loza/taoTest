@@ -1,34 +1,40 @@
 <template>
     <section class="all-cards">
-        <div class="card-user">
-         <img class="user-image" src="../assets/user.png" alt="user">
-         <p> Nombre usuario </p>
-        </div>
-        <div class="card-user">
-         <img class="user-image" src="../assets/user.png" alt="user">
-         <p> Nombre usuario </p>
-        </div>
-        <div class="card-user">
-         <img class="user-image" src="../assets/user.png" alt="user">
-         <p> Nombre usuario </p>
-        </div>
-        <div class="card-user">
-         <img class="user-image" src="../assets/user.png" alt="user">
-         <p> Nombre usuario </p>
-        </div>
-        <div class="card-user">
-         <img class="user-image" src="../assets/user.png" alt="user">
-         <p> Nombre usuario </p>
+        <div v-for="(user, index) in usuarios" :key="index" class="card-user">
+         <img class="user-image" :src="user.picture" alt="user">
+         <p>{{user.title}} {{user.firstname}} {{user.lastname}}</p>
+         <p id="email">{{user.email}}</p>
         </div>
     </section>
 </template>
 
 <script>
-// import { defineComponent } from '@vue/composition-api'
+import users from '../assets/data/testtakers.json'
 export default {
   name: 'Test-taker',
-  props: {
+  data () {
+    return {
+      data: []
+    }
+  },
+  computed: {
+    usuarios () {
+      return users.map((user) => {
+        return user
+      })
+    }
   }
+//   created () {
+//     this.getUsers()
+//   },
+//   methods: {
+//     getUsers () {
+//       fetch('./testtakers.json')
+//         .then(res => res.json())
+//         .then(data => console.log(data))
+//         .catch(err => console.log(err))
+//     }
+//   }
 }
 </script>
 
@@ -44,11 +50,16 @@ export default {
  .card-user{
  justify-content: center;
  margin: 5%;
- pading: 0 3%;
+ padding: 0 3%;
 box-shadow: 0.5px 9px 9px 4px rgba(0, 0, 0, 0.2);
  }
  .user-image {
  width:10%}
+ #email {
+ color: #d77d81;
+ font-size: 120%;
+ margin: 1%
+ }
 
  p {
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
